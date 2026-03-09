@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 
 type Teacher = {
   id: string;
@@ -79,7 +80,7 @@ export default function DirectoryClient({ teachers }: { teachers: Teacher[] }) {
                 <button
                   key={subject}
                   onClick={() => toggleSubject(subject)}
-                  className="px-3 py-1.5 rounded-full text-sm transition-all duration-150"
+                  className="px-3 py-1.5 rounded-full cursor-pointer text-sm transition-all duration-150"
                   style={{
                     background: isSelected ? "linear-gradient(135deg, #b85c3a, #d4784e)" : "rgba(255,255,255,0.8)",
                     color: isSelected ? "#fff" : "#3d5535",
@@ -105,7 +106,7 @@ export default function DirectoryClient({ teachers }: { teachers: Teacher[] }) {
                 <button
                   key={val}
                   onClick={() => setTravelFilter(val)}
-                  className="px-4 py-1.5 text-sm font-medium transition-all duration-150 capitalize"
+                  className="px-4 py-1.5 text-sm cursor-pointer font-medium transition-all duration-150 capitalize"
                   style={{
                     background: travelFilter === val ? "linear-gradient(135deg, #4a7040, #6a9a60)" : "#fff",
                     color: travelFilter === val ? "#fff" : "#3d5535",
@@ -201,6 +202,18 @@ export default function DirectoryClient({ teachers }: { teachers: Teacher[] }) {
                 <p className="text-sm flex items-center gap-2" style={{ color: "#5a7a50" }}>
                   <span>📞</span> {t.phone}
                 </p>
+            
+                <Link
+                  href={`/teachers/${t.id}`}
+                  className="mt-4 flex items-center justify-center gap-1 w-full py-2 rounded-xl text-sm font-semibold transition-all duration-200"
+                  style={{
+                    background: "rgba(184,92,58,0.08)",
+                    color: "#b85c3a",
+                    border: "1px solid rgba(184,92,58,0.2)",
+                  }}
+                >
+                  View Profile →
+                </Link>
               </div>
             </div>
           ))}
