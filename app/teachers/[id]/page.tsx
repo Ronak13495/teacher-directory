@@ -15,13 +15,13 @@ type Teacher = {
 export default async function TeacherProfilePage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const supabase = await createClient();
   const { data: teacher } = await supabase
     .from("teacher")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", (await params).id)
     .single<Teacher>();
 
   if (!teacher) notFound();
