@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Music Teacher Directory",
   description: "A directory for music teachers to connect with students",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
